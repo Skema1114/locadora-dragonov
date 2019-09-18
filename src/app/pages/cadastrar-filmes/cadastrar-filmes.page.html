@@ -1,21 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Locadora Drogonov</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Locadora Drogonov</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/listar-filmes"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form>
-    <ion-item>
-      <ion-label position="floating">Titulo</ion-label>
-      <ion-input [(ngModel)]="inputTitulo" name="inputTitulo" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Genero</ion-label>
-      <ion-input [(ngModel)]="inputGenero" name="inputGenero" type="text"></ion-input>
-    </ion-item>
-    <ion-button expand="block" (click)="gravar()">
-      Gravar
-    </ion-button>
-  </form>
+    <form [formGroup]="formHome">
+        <ion-item>
+            <ion-label position="floating">Titulo</ion-label>
+            <ion-input hint="Meu filme" [(ngModel)]="inputTitulo" formControlName="inputTitulo" type="text"></ion-input>
+            <ion-note *ngIf="
+          formHome.get('inputTitulo').dirty && formHome.get('inputTitulo').hasError('required')
+        " slot="end" color="danger">
+                Adicione um titulo
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Genero</ion-label>
+            <ion-input hint="Meu gênero" [(ngModel)]="inputGenero" formControlName="inputGenero" type="text"></ion-input>
+            <ion-note *ngIf="
+          formHome.get('inputGenero').dirty && formHome.get('inputGenero').hasError('required')
+        " slot="end" color="danger">
+                Adicione um gênero
+            </ion-note>
+        </ion-item>
+        <ion-button expand="block" (click)="gravar()" [disabled]="!formHome.valid">
+            Gravar
+        </ion-button>
+    </form>
 </ion-content>

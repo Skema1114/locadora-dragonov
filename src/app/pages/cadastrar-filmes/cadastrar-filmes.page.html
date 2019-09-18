@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Locadora Drogonov</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input [(ngModel)]="inputTitulo" name="inputTitulo" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Genero</ion-label>
+      <ion-input [(ngModel)]="inputGenero" name="inputGenero" type="text"></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="gravar()">
+      Gravar
+    </ion-button>
+  </form>
+</ion-content>

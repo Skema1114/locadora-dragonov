@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Locadora Drogonov</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let item of retorno | async">
+      <ion-card-header>
+        <ion-card-title>{{ item.titulo }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>{{ item.genero }}</ion-label>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-button expand="block" (click)="proximaTela()">
+    Cadastrar filme
+  </ion-button>
+</ion-content>
